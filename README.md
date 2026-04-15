@@ -1,8 +1,14 @@
-# ZHIYUN F100 项目
+# ZHIYUN F100（智云F100） 固件逆向工程与重构开发
 
-## 项目概述
+## 项目概述 (Project Overview)
 
-本项目是关于智云（ZHIYUN）F100 设备的逆向工程与固件开发项目。主要包含硬件分析、协议逆向、固件开发和仿真测试等内容。项目涉及 APM32F103 和 STM32F407 微控制器的应用。
+本项目是关于智云（ZHIYUN）五倍 F100 棒灯产品的逆向工程与固件开发项目。一般称为智云 F100。同时也可以用作智云 FR100C、写趣味 F100 等棒灯产品的逆向参考。
+
+This project is a reverse engineering and firmware development project for the ZHIYUN F100 (五倍 F100) LED light stick product. It is generally referred to as ZHIYUN F100. It can also be used as a reference for reverse engineering other LED light stick products such as ZHIYUN FR100C and Xie Qu Wei F100.
+
+主要包含硬件分析、协议逆向、固件开发和仿真测试等内容。项目涉及 APM32F103 和 STM32F407 微控制器的应用。
+
+It mainly includes hardware analysis, protocol reverse engineering, firmware development, and simulation testing. The project involves the application of APM32F103 and STM32F407 microcontrollers.
 
 ## 目录结构
 
@@ -109,4 +115,6 @@ renode apm32_f100.resc
 
 ---
 
-**注意**: 本项目仅供学习和研究使用，请勿用于商业用途。
+**注意**: 本项目仅供学习和维修建议使用，请勿用于商业用途。
+
+**Note**: This project is for learning and repair reference only, not for commercial use.
