@@ -10,6 +10,20 @@ This project is a reverse engineering and firmware development project for the Z
 
 It mainly includes hardware analysis, protocol reverse engineering, firmware development, and simulation testing. The project involves the application of APM32F103 and STM32F407 microcontrollers.
 
+## Star History
+
+如果项目对你有帮助，请麻烦给一个 star！
+
+If this project has been helpful to you, please consider giving it a star!
+
+<a href="https://www.star-history.com/?repos=frain1219%2FZHIYUN_F100&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=frain1219/ZHIYUN_F100&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=frain1219/ZHIYUN_F100&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=frain1219/ZHIYUN_F100&type=date&legend=top-left" />
+ </picture>
+</a>
+
 ## 目录结构
 
 ```
@@ -118,3 +132,9 @@ renode apm32_f100.resc
 **注意**: 本项目仅供学习和维修建议使用，请勿用于商业用途。
 
 **Note**: This project is for learning and repair reference only, not for commercial use.
+
+---
+
+如果项目对你有帮助，请麻烦给一个 star！
+
+If this project has been helpful to you, please consider giving it a star!
