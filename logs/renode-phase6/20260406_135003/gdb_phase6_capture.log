@@ -1,0 +1,30 @@
+warning: No executable has been specified and target does not support
+determining executable automatically.  Try using the "file" command.
+0x080009b2 in ?? ()
+Starting emulation...
+=== Phase6 Snapshot: PC/SP/LR ===
+pc             0x80009b2           0x80009b2
+sp             0x20004f70          0x20004f70
+lr             0x8000c9d           134220957
+=== GPIOC_IDR (PC13 source) ===
+0x40011008:	0x00000000
+=== GPIOB_BSRR / BRR (PB3/PB11 sink) ===
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== TMR1 registers (PWM) ===
+0x40012c00:	0x00000081
+0x40012c2c:	0x000004b0
+0x40012c34:	0x00000018
+0x40012c3c:	0x00000018
+=== TMR4_CNT (encoder source) ===
+0x40000824:	0x00000000
+=== ADC1_DR (dimming source) ===
+0x4001244c:	/Users/milocheung/Documents/codeProject/ZHIYUN_F100/logs/renode-phase6/20260406_135003/phase6_capture.gdb:20: Error in sourced command file:
+Cannot access memory at address 0x4001244c
+(gdb) A debugging session is active.
+
+	Inferior 1 [Remote target] will be detached.
+
+Quit anyway? (y or n) [answered Y; input not from terminal]
+Detaching from pid Remote target
+[Inferior 1 (Remote target) detached]

@@ -1,0 +1,64 @@
+mach set "ZHIYUN_F100"
+(ZHIYUN_F100) 
+sysbus.cpu AddHook 0x80012e8 "machine.PauseAndRequestEmulationPause()"
+(ZHIYUN_F100) 
+=== emulation RunFor "1" s (virtual) ===
+emulation RunFor "1"
+(ZHIYUN_F100) 
+=== pause（幂等；若已在 pause 则无妨）===
+pause
+Pausing emulation...
+(ZHIYUN_F100) 
+=== sysbus.cpu PC ===
+sysbus.cpu PC
+0x800459e
+(ZHIYUN_F100) 
+=== GetRegister 0..15 ===
+sysbus.cpu GetRegister 0
+0x1
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 1
+0x0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 2
+0xe000ed18
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 3
+0xf
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 4
+0x200015dc
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 5
+0x40021000
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 6
+0x0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 7
+0x42420000
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 8
+0x0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 9
+0x0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 10
+0x0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 11
+0x0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 12
+0x0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 13
+0x200015a0
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 14
+0x80045a7
+(ZHIYUN_F100) 
+sysbus.cpu GetRegister 15
+0x800459e
+(ZHIYUN_F100) 

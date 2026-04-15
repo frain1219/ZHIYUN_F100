@@ -1,0 +1,9 @@
+21:53:55.8046 [INFO] Loaded monitor commands from: /Applications/Renode.app/Contents/MacOS/scripts/monitor.py
+21:53:55.8126 [INFO] Monitor available in telnet mode on port 49152
+21:53:55.8718 [INFO] Including script(s): /Users/milocheung/Documents/codeProject/ZHIYUN_F100/Renode/apm32_f100_gdb_first.resc
+21:53:55.8796 [INFO] System bus created.
+21:53:57.6426 [WARNING] Translation cache size 536870912 is larger than maximum allowed 134217728. It will be clamped to maximum
+21:53:57.8972 [INFO] sysbus: Loaded SVD: /var/folders/pb/2mgyljr14px5tqdvvcyvx_ch0000gn/T/renode-41823/18368b5c-3a63-4d66-b1c6-e032683b9d4b.tmp. Name: STM32F103. Description: STM32F103.
+21:53:57.9111 [INFO] sysbus: Loading block of 131072 bytes length at 0x8000000.
+21:53:58.1971 [INFO] ZHIYUN_F100: CPUs: ["ZHIYUN_F100.cpu"] were added to a new GDB server created on port :3333
+21:53:58.1971 [INFO] ZHIYUN_F100: GDB server with all CPUs started on port :3333

@@ -1,0 +1,7 @@
+0x08000466 in Phase6_InputAdapter_Poll ()
+Starting emulation...
+=== Stimulate USB insert via symbol call ===
+/Users/milocheung/Documents/codeProject/ZHIYUN_F100/logs/renode-phase6/20260406_135652/phase6_capture.gdb:9: Error in sourced command file:
+No symbol table is loaded.  Use the "file" command.
+(gdb) Detaching from program: /Users/milocheung/Documents/codeProject/ZHIYUN_F100/ZHIYUN_F100_Firmware/zhiyun_f100_apm32/.pio/build/apm32f103cb/firmware.elf, Remote target
+[Inferior 1 (Remote target) detached]

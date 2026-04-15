@@ -1,0 +1,57 @@
+#!/usr/bin/expect -f
+# GDB continue 后约 0.5s 向 Renode Monitor 发 pause，促使 GDB 侧 continue 返回，再读 PC/r0–r3。
+# 前置：49152=Monitor，3333=GDB（apm32_f100_gdb_first.resc）
+
+set timeout 45
+if {![info exists env(RENODE_MONITOR_PORT)]} {
+    set env(RENODE_MONITOR_PORT) 49152
+}
+set mon $env(RENODE_MONITOR_PORT)
+
+if {[info exists env(GDB)]} {
+    set gdb $env(GDB)
+} else {
+    set gdb "arm-none-eabi-gdb"
+}
+
+spawn $gdb -n -q
+expect -re "\\(gdb\\)"
+send "set pagination off\r"
+expect -re "\\(gdb\\)"
+send "set architecture armv3m\r"
+expect -re "\\(gdb\\)"
+send "target extended-remote localhost:3333\r"
+expect -re "\\(gdb\\)"
+send "set \$sp=0x20001620\r"
+expect -re "\\(gdb\\)"
+send "set \$pc=0x08006be9\r"
+expect -re "\\(gdb\\)"
+send "hbreak *0x080012e8\r"
+expect -re "\\(gdb\\)"
+send "monitor start\r"
+expect -re "\\(gdb\\)"
+
+puts stderr "\n[expect] continue; 并行 sleep+pause Monitor :$mon\n"
+send "continue\r"
+exec sh -c "sleep 0.5 && echo pause | nc 127.0.0.1 $mon >/dev/null 2>&1" &
+
+expect {
+    -re "Breakpoint" { puts stderr "[expect] Breakpoint\n" }
+    -re "SIGINT" { puts stderr "[expect] SIGINT\n" }
+    -re "stopped" { puts stderr "[expect] stopped\n" }
+    timeout { puts stderr "[expect] timeout waiting prompt\n" }
+}
+expect -re "\\(gdb\\)"
+
+send "printf \"PC=%#x r0=%#x r1=%#x r2=%#x r3=%#x\\n\", \$pc, \$r0, \$r1, \$r2, \$r3\r"
+expect -re "\\(gdb\\)"
+send "info registers\r"
+expect -re "\\(gdb\\)"
+send "x/4wx 0x200002c4\r"
+expect -re "\\(gdb\\)"
+send "x/8i \$pc\r"
+expect -re "\\(gdb\\)"
+send "dump binary memory renode_sram_20k.bin 0x20000000 0x20005000\r"
+expect -re "\\(gdb\\)"
+send "quit\r"
+expect eof

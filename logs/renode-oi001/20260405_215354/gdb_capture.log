@@ -1,0 +1,80 @@
+>>> target extended-remote localhost:3333
+warning: No executable has been specified and target does not support
+determining executable automatically.  Try using the "file" command.
+0x0800570e in ?? ()
+>>> sourcing /tmp/renode_oi001_cap_XXXXXX.gdb (Monitor port 49152)
+The target architecture is set to "armv3m".
+
+>>> 将 PC/SP 置为与 apm32_f100_core.resc 一致（Thumb 复位向量）...
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+
+>>> Renode: monitor start（经 GDB 转发）...
+Starting emulation...
+
+>>> interrupt（采样当前执行点；勿使用 continue/advance，见文件头说明）...
+
+==== OI-001 快照：寄存器 / 栈 / 散载相关字 ====
+PC=0x8006be9 LR=0x80045a7 SP=0x20001620
+r0             0x200048f0          536889584
+r1             0x0                 0
+r2             0xe000ed18          3758157080
+r3             0xf                 15
+r4             0x200015dc          536876508
+r5             0x40021000          1073876992
+r6             0x0                 0
+r7             0x42420000          1111621632
+r8             0x0                 0
+r9             0x0                 0
+r10            0x0                 0
+r11            0x0                 0
+r12            0x0                 0
+sp             0x20001620          0x20001620
+lr             0x80045a7           134235559
+pc             0x8006be9           0x8006be9
+xpsr           0x21000000          553648128
+msp            0x0                 0
+psp            0x0                 0
+primask        0x1                 1
+basepri        0x0                 0
+faultmask      0x0                 0
+control        0x0                 0
+
+--- stack 64 bytes ---
+0x20001620:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20001630:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20001640:	0x00000000	0x00000000	0x00000000	0x00000000
+0x20001650:	0x00000000	0x00000000	0x00000000	0x00000000
+
+--- Flash 池字 @ 0x0800695C（DAT_0800695C → 控制块指针）---
+0x800695c:	0x200002c4
+
+--- SRAM @ 0x200002C4（控制块区域，见 04 §1.3）---
+0x200002c4:	0x00000000	0x20000230	0x00000000	0x20004888
+
+--- r0–r3（便于与 Scatterload_DecompressRegionOrMemcpy 实参对照）---
+r0=0x200048f0 r1=0 r2=0xe000ed18 r3=0xf
+
+--- 指令窗：0x0800692A（scatterload_rw_decompress_entry）---
+   0x800692a:	push	{r3, r4, r5, r6, r7, lr}
+   0x800692c:	mov	r6, r1
+   0x800692e:	lsls	r4, r2, #9
+   0x8006930:	movs	r5, #0
+   0x8006932:	ldr	r7, [pc, #40]	@ (0x800695c)
+   0x8006934:	str	r6, [sp, #0]
+   0x8006936:	mov	r2, r4
+   0x8006938:	mov	r3, r5
+
+--- 指令窗：0x080012E8（Scatterload_DecompressRegionOrMemcpy）---
+   0x80012e8:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
+   0x80012ec:	ldr	r1, [r0, #12]
+   0x80012ee:	ldrd	r4, r5, [r1]
+   0x80012f2:	udiv	r6, r2, r4
+   0x80012f6:	ldr	r5, [r0, #4]
+   0x80012f8:	mov	r0, r5
+   0x80012fa:	bl	0x80008b8
+   0x80012fe:	mov	r1, r0
+
+>>> 导出 SRAM 20KB（路径由 renode_gdb_capture.sh 注入）
+[Inferior 1 (Remote target) detached]

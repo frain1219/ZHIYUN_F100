@@ -1,0 +1,107 @@
+/*!
+ * @file        usbd_winusb_vcp.h
+ *
+ * @brief       usb device WINUSB class VCP handler header file
+ *
+ * @version     V1.0.0
+ *
+ * @date        2023-01-16
+ *
+ * @attention
+ *
+ *  Copyright (C) 2023 Geehy Semiconductor
+ *
+ *  You may not use this file except in compliance with the
+ *  GEEHY COPYRIGHT NOTICE (GEEHY SOFTWARE PACKAGE LICENSE).
+ *
+ *  The program is only for reference, which is distributed in the hope
+ *  that it will be useful and instructional for customers to develop
+ *  their software. Unless required by applicable law or agreed to in
+ *  writing, the program is distributed on an "AS IS" BASIS, WITHOUT
+ *  ANY WARRANTY OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the GEEHY SOFTWARE PACKAGE LICENSE for the governing permissions
+ *  and limitations under the License.
+ */
+
+/* Define to prevent recursive inclusion */
+#ifndef _USBD_WINUSB_VCP_H_
+#define _USBD_WINUSB_VCP_H_
+
+/* Includes */
+#include "usbd_winusb.h"
+
+/** @addtogroup Examples
+  * @brief OTGD WINUSB examples
+  @{
+  */
+
+/** @addtogroup OTGD_WINUSB_HS2
+  @{
+  */
+
+/** @defgroup OTGD_WINUSB_HS2_Macros Macros
+  @{
+*/
+
+#define USBD_WINUSB_TX_BUF_LEN         1024
+#define USBD_WINUSB_RX_BUF_LEN         1024
+
+/**@} end of group OTGD_WINUSB_HS2_Macros*/
+
+/** @defgroup OTGD_WINUSB_HS2_Enumerates Enumerates
+  @{
+  */
+
+/**
+ * @brief   USB device WINUSB VCP status
+ */
+typedef enum
+{
+    USBD_WINUSB_VCP_IDLE,
+    USBD_WINUSB_VCP_REV_UPDATE,
+} USBD_WINUSB_VCP_STA_T;
+
+/**@} end of group OTGD_WINUSB_HS2_Enumerates*/
+
+/** @defgroup OTGD_WINUSB_HS2_Structures Structures
+  @{
+  */
+
+/**
+ * @brief   USB device WINUSB VCP information
+ */
+typedef struct
+{
+    uint32_t    rxUpdateLen;
+    uint8_t     state;
+} USBD_WINUSB_VCP_INFO_T;
+
+/**@} end of group OTGD_WINUSB_HS2_Structures*/
+
+/** @defgroup OTGD_WINUSB_HS2_Variables Variables
+  @{
+  */
+
+extern USBD_WINUSB_INTERFACE_T USBD_WINUSB_INTERFACE_HS;
+extern USBD_WINUSB_VCP_INFO_T gUsbVCP;
+extern uint8_t winusbTxBuffer[USBD_WINUSB_TX_BUF_LEN];
+extern uint8_t winusbRxBuffer[USBD_WINUSB_RX_BUF_LEN];
+
+/**@} end of group OTGD_WINUSB_HS2_Variables*/
+
+/** @defgroup OTGD_WINUSB_HS2_Functions Functions
+  @{
+  */
+
+USBD_STA_T USBD_HS_WINUSB_ItfInit(void);
+USBD_STA_T USBD_HS_WINUSB_ItfDeInit(void);
+USBD_STA_T USBD_HS_WINUSB_ItfCtrl(uint8_t command, uint8_t *buffer, uint16_t length);
+USBD_STA_T USBD_HS_WINUSB_ItfSend(uint8_t *buffer, uint16_t length);
+USBD_STA_T USBD_HS_WINUSB_ItfSendEnd(uint8_t epNum, uint8_t *buffer, uint32_t *length);
+USBD_STA_T USBD_HS_WINUSB_ItfReceive(uint8_t *buffer, uint32_t *length);
+
+/**@} end of group OTGD_WINUSB_HS2_Functions */
+/**@} end of group OTGD_WINUSB_HS2 */
+/**@} end of group Examples */
+
+#endif

@@ -1,0 +1,48 @@
+0x08000db8 in SPI1_StartupSequence ()
+Starting emulation...
+=== Stimulate USB insert via LightPd pending-event SRAM injection ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+=== Force PD attached branch (fallback) ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+=== Phase6 Snapshot: PC/SP/LR ===
+pc             0x8000db8           0x8000db8 <SPI1_StartupSequence+208>
+sp             0x20004fcc          0x20004fcc
+lr             0x200005b4          536872372
+=== GPIOC_IDR (PC13 source) ===
+0x40011008:	0x00000000
+=== GPIOB_ODATA (PB3/PB11 observable state) ===
+0x40010c0c:	0x00000000
+=== GPIOB_BSRR / BRR shadow check ===
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== Phase6 PD state shadows (SRAM) ===
+0x2000051d <g_phase6_pd_pb3_state>:	0x00
+0x2000051c <g_phase6_pd_pb11_state>:	0x00
+0x20000560 <g_phase6_usb_attached>:	0x00000001
+0x20000564 <g_phase6_usb_insert_event_count>:	0x00000000
+0x20000518 <g_phase6_pd_gpio_count>:	0x00000000
+0x2000052c <g_phase6_protocol_lane_expand_count>:	0x00000001
+=== TMR1 registers (PWM) ===
+0x40012c00:	0x00000000
+0x40012c2c:	0x0000ffff
+0x40012c34:	0x0000ffff
+0x40012c3c:	0x0000ffff
+=== TMR4_CNT (encoder source) ===
+0x40000824:	0x00000000
+=== SPI1 startup frame trace (23B) ===
+0x200005a8 <g_phase6_spi1_startup_tx_count>:	0x00000000
+0x200005ac <g_phase6_spi1_startup_done>:	0x00000000
+0x200005b4 <g_phase6_spi1_startup_last_byte>:	0x00000000
+0x200005a0 <g_phase6_spi1_startup_cs_low_count>:	0x00000001
+0x200005b0 <g_phase6_spi1_startup_cs_high_count>:	0x00000000
+0x200005a4 <g_phase6_spi1_startup_wait_timeout_count>:	0x00000000
+[Inferior 1 (Remote target) detached]

@@ -1,0 +1,46 @@
+ZHIYUN F100 — 量产固件禁用周期电量计（方案 A）补丁记录
+生成时间：2026-04-11
+
+1) Ghidra 会话基线（user-ghidra MCP）
+   - 当前程序：ZHIYUN-F100-full.bin
+   - 可执行路径：dump/ZHIYUN-F100-full.bin（工作区相对路径）
+   - 架构：ARM Cortex Thumb，Flash 基址 0x08000000
+
+2) 输入文件
+   - 路径：dump/ZHIYUN-F100-full.bin
+   - 大小：131072 字节
+   - SHA-256：b3ee8f013f2c9437344ef70e5ed05f9fbd324d95bf2e74668ea19a35761e406c
+
+3) 输出文件
+   - 路径：dump/ZHIYUN-F100-full_no_battgauge.bin
+   - 大小：131072 字节（与量产镜像相同）
+   - SHA-256：7fa668202ab666755bcd4a604e178139d34223ce80856723100210885171c638
+
+4) 补丁表（文件内偏移 = Flash 地址 - 0x08000000）
+   Flash 地址     文件偏移   旧字节（hex）           新字节（hex）
+   0x0800CC74     0xCC74     bd e8 10 40 ff f7 1f bb  10 bd c0 46 c0 46 c0 46
+
+   语义：
+   - 旧：pop.w {r4,lr} 后对 BatteryGauge_ADC9_UpdateFromSysTick600（0x0800C2BA）尾调用 b.w
+   - 新：pop {r4,pc} 直接返回调用方，并以 ARMv6-M/Thumb NOP（mov r8,r8）填充剩余 6 字节，
+     保持与原先相同的 8 字节占用，不移动后续代码布局。
+
+5) 受影响符号（Ghidra 名）
+   - PD_PeriodicDispatchFromSysTick @ 0x0800CC3C
+   - 不再从 SysTick>600 分支尾调用 BatteryGauge_ADC9_UpdateFromSysTick600
+
+6) 静态验证（已执行）
+   - arm-none-eabi-objdump -b binary -m armv7 -M force-thumb --start-address=0xcc3c --stop-address=0xcc90
+   - 在 0xCC70 bl PD_600tickAttachWindow_StateMachine 之后可见：
+     cc74: bd10  pop {r4, pc}
+     cc76-cc7a: 46c0  nop（×3）
+   - 与量产 bin 字节级对比：仅 8 处不同，且全部位于文件偏移 0xCC74–0xCC7B（连续块）。
+
+7) 实机验收（需您本地 SWD 烧录；本环境无硬件，无法代测）
+   - 烧录：dump/ZHIYUN-F100-full_no_battgauge.bin 至 0x08000000（与原厂相同映射）
+   - 条件：无 6S / PL5500 VBUS 已按您的硬件改造断开，仅外供电
+   - 期望：开机动画后保持运行，无「低电」触发的秒级关机动画
+   - 若仍关机：按计划排查 LightApply_ReadContextState3、UI_OLED 父级、PD_GPIO_StateMachine、IWDT 等第二路径；必要时再启用方案 B（UI_PromptGlobals_GetStatus 恒 0）
+
+8) 方案 B
+   - 本轮未应用（方案 A 为首选且已满足计划交付）

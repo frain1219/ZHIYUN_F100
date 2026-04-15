@@ -1,0 +1,20 @@
+# Renode OI-001 采集二进制（日志 *.log 可保留提交；按需删此行以全忽略 logs/renode-oi001）
+logs/renode-oi001/**/*.bin
+
+# 忽略资料和下载器文件夹
+射日科技STM32F407资料/
+CH549G下载器/
+
+# macOS 系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+.apdisk
+
+# 忽略特定文件
+File Document/PCB.psd

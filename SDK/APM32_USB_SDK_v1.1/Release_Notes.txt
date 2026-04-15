@@ -1,0 +1,10 @@
+Release Notes for APM32 USB SDK
+
+Update History
+V1.0 / 06-02-2023
+First Release version of APM32 USB SDK.
+
+V1.1 / 30-11-2023
+Add some APM32E10x examples.
+Add some class examples: custom hid; low power;Keyboard; MSC_HS1;
+Add dual core examples and DRD example.

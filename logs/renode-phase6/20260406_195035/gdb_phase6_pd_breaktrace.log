@@ -1,0 +1,348 @@
+0x080013d2 in Phase6_StartupChain_Run ()
+Breakpoint 1 at 0x80008f8
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Hardware assisted breakpoint 2 at 0x8000c52
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+
+Breakpoint 1, 0x080008f8 in PD_GPIO_StateMachine ()
+=== Breaktrace snapshot (entry) ===
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x080008f8 <PD_GPIO_StateMachine+4>
+	breakpoint already hit 1 time
+2       hw breakpoint  keep y   0x08000c52 <UI_SPI1_PumpEightFramebufferSlices+14>
+pc             0x80008f8           0x80008f8 <PD_GPIO_StateMachine+4>
+sp             0x20004f30          0x20004f30
+lr             0x8000dd7           134221271
+=== GPIO register view ===
+0x40011008:	0x00000000
+0x40010c0c:	0x00000400
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== PD shadow/counter view ===
+0x200008f0 <g_phase6_usb_attached>:	0x00000001
+0x20000878 <g_phase6_protocol_lane_expand_count>:	0x00000001
+0x20000864 <g_phase6_pd_gpio_count>:	0x00000000
+0x20000869 <g_phase6_pd_pb3_state>:	0x00
+0x20000868 <g_phase6_pd_pb11_state>:	0x00
+0x20000548 <g_phase6_last_stage>:	0x00000002
+0x20000888 <g_phase6_spi_flush_trigger_count>:	0x00000000
+0x20000880 <g_phase6_spi_flush_skip_count>:	0x00000000
+=== Main semantic counters (entry) ===
+0x200008f8 <g_phase6_main_boot_phase_counter8>:	0x00000000
+0x200008fc <g_phase6_main_iwdg_reload_count>:	0x00000000
+=== Flush cadence context (entry) ===
+0x2000051c <g_phase6_call_ticks>:	0x00000001
+0x20000854 <g_phase6_oled_last_flush_tick>:	0x00000000
+0x200008c8 <g_phase6_ui_frame_dirty>:	0x01
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080008fa in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080008fc in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080008fe in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000900 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000902 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000904 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000906 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000908 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800090c in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800090e in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000910 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000912 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000914 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000916 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000918 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800091c in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800091e in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000920 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000922 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000924 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000926 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000928 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800092a in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800092c in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800092e in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000930 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000932 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000dd6 in PD_PowerAndProtocol_Block ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800097c in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800097e in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000980 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000982 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000984 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000986 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000988 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800098a in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800098c in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000990 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000992 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009ae in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009b0 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009b2 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009b4 in PD_HelperSeq_3000tick_ThenPc13Gpio ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000dda in PD_PowerAndProtocol_Block ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009d4 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009d6 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009d8 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009da in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009dc in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009de in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009e0 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009e2 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009e4 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009e6 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009e8 in ProtocolLanes_BitExpandTick ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000dde in PD_PowerAndProtocol_Block ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009f8 in Encoder_DispatchDelta_FromTMR4 ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009fa in Encoder_DispatchDelta_FromTMR4 ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080009fc in Encoder_DispatchDelta_FromTMR4 ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000a04 in Encoder_DispatchDelta_FromTMR4 ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000a06 in Encoder_DispatchDelta_FromTMR4 ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000a08 in Encoder_DispatchDelta_FromTMR4 ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000a0a in Encoder_DispatchDelta_FromTMR4 ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000de2 in PD_PowerAndProtocol_Block ()
+=== Breaktrace snapshot (post-step 64) ===
+pc             0x8000de2           0x8000de2 <PD_PowerAndProtocol_Block+198>
+sp             0x20004f38          0x20004f38
+lr             0x8000de3           134221283
+=== GPIO register view (post-step) ===
+0x40011008:	0x00000000
+0x40010c0c:	0x00000c08
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== PD shadow/counter view (post-step) ===
+0x200008f0 <g_phase6_usb_attached>:	0x00000001
+0x20000878 <g_phase6_protocol_lane_expand_count>:	0x00000002
+0x20000864 <g_phase6_pd_gpio_count>:	0x00000001
+0x20000869 <g_phase6_pd_pb3_state>:	0x01
+0x20000868 <g_phase6_pd_pb11_state>:	0x01
+0x20000548 <g_phase6_last_stage>:	0x00000006
+0x20000888 <g_phase6_spi_flush_trigger_count>:	0x00000000
+0x20000880 <g_phase6_spi_flush_skip_count>:	0x00000000
+=== Main semantic counters (post-step) ===
+0x200008f8 <g_phase6_main_boot_phase_counter8>:	0x00000000
+0x200008fc <g_phase6_main_iwdg_reload_count>:	0x00000000
+=== Flush cadence context (post-step) ===
+0x2000051c <g_phase6_call_ticks>:	0x00000001
+0x20000854 <g_phase6_oled_last_flush_tick>:	0x00000000
+0x200008c8 <g_phase6_ui_frame_dirty>:	0x01
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+=== Force flush branch: SKIP ===
+=== Continue to UI flush breakpoint ===
+
+Breakpoint 2, 0x08000c52 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+=== Force flush branch: SKIP ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000c54 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000c56 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000c58 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000c5a in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000c5c in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000ce4 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000ce6 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000ce8 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cea in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cec in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cd2 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cd4 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cd6 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cd8 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cda in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cdc in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000cde in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000ce0 in UI_SPI1_PumpEightFramebufferSlices ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080010a2 in Phase6_Scheduler_RunOnce ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080010a4 in Phase6_Scheduler_RunOnce ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000e2c in Phase6_LightPd_ReadTraceSnapshot ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000e2e in Phase6_LightPd_ReadTraceSnapshot ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000e30 in Phase6_LightPd_ReadTraceSnapshot ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000e32 in Phase6_LightPd_ReadTraceSnapshot ()
+=== Flush breakpoint snapshot (rehit+post-step 24) ===
+pc             0x8000e32           0x8000e32 <Phase6_LightPd_ReadTraceSnapshot+6>
+sp             0x20004f48          0x20004f48
+lr             0x80010a9           134221993
+0x20000548 <g_phase6_last_stage>:	0x0000000a
+0x20000888 <g_phase6_spi_flush_trigger_count>:	0x00000000
+0x20000880 <g_phase6_spi_flush_skip_count>:	0x00000001
+[Inferior 1 (Remote target) detached]

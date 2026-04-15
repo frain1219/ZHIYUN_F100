@@ -1,0 +1,11 @@
+# 与 apm32_f100.resc 等价别名（兼容旧引用）；核心见 apm32_f100_core.resc
+
+include @/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Renode/apm32_f100_core.resc
+
+echo "-------------------------------------------------------"
+echo "  ZHIYUN F100（apm32.resc 别名）已就绪 — 自动 start"
+echo "  GDB: target extended-remote localhost:3333"
+echo "  散载断点请用: apm32_f100_gdb_first.resc"
+echo "-------------------------------------------------------"
+
+start

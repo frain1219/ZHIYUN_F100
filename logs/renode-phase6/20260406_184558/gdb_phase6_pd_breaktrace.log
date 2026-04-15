@@ -1,0 +1,127 @@
+0x08001428 in Phase6_StartupChain_Run ()
+Hardware assisted breakpoint 1 at 0x80008f8
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+
+Breakpoint 1, 0x080008f8 in PD_GPIO_StateMachine ()
+=== Breaktrace snapshot (entry) ===
+Num     Type           Disp Enb Address    What
+1       hw breakpoint  keep y   0x080008f8 <PD_GPIO_StateMachine+4>
+	breakpoint already hit 1 time
+pc             0x80008f8           0x80008f8 <PD_GPIO_StateMachine+4>
+sp             0x20004f30          0x20004f30
+lr             0x8000dd7           134221271
+=== GPIO register view ===
+0x40011008:	0x00000000
+0x40010c0c:	0x00000400
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== PD shadow/counter view ===
+0x200008f0 <g_phase6_usb_attached>:	0x00000001
+0x20000878 <g_phase6_protocol_lane_expand_count>:	0x00000001
+0x20000864 <g_phase6_pd_gpio_count>:	0x00000000
+0x20000869 <g_phase6_pd_pb3_state>:	0x00
+0x20000868 <g_phase6_pd_pb11_state>:	0x00
+0x20000548 <g_phase6_last_stage>:	0x00000002
+0x20000888 <g_phase6_spi_flush_trigger_count>:	0x00000000
+0x20000880 <g_phase6_spi_flush_skip_count>:	0x00000000
+=== Main semantic counters (entry) ===
+0x200008f8 <g_phase6_main_boot_phase_counter8>:	0x00000001
+0x200008fc <g_phase6_main_iwdg_reload_count>:	0x00000001
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080008fa in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080008fc in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x080008fe in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000900 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000902 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000904 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000906 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000908 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800090c in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800090e in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000910 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000912 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000914 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000916 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000918 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800091c in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800091e in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000920 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000922 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000924 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000926 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x08000928 in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800092a in PD_GPIO_StateMachine ()
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+0x0800092c in PD_GPIO_StateMachine ()
+=== Breaktrace snapshot (post-step 24) ===
+pc             0x800092c           0x800092c <PD_GPIO_StateMachine+56>
+sp             0x20004f30          0x20004f30
+lr             0x8000dd7           134221271
+=== GPIO register view (post-step) ===
+0x40011008:	0x00000000
+0x40010c0c:	0x00000c08
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== PD shadow/counter view (post-step) ===
+0x200008f0 <g_phase6_usb_attached>:	0x00000001
+0x20000878 <g_phase6_protocol_lane_expand_count>:	0x00000001
+0x20000864 <g_phase6_pd_gpio_count>:	0x00000001
+0x20000869 <g_phase6_pd_pb3_state>:	0x01
+0x20000868 <g_phase6_pd_pb11_state>:	0x01
+0x20000548 <g_phase6_last_stage>:	0x00000002
+0x20000888 <g_phase6_spi_flush_trigger_count>:	0x00000000
+0x20000880 <g_phase6_spi_flush_skip_count>:	0x00000000
+=== Main semantic counters (post-step) ===
+0x200008f8 <g_phase6_main_boot_phase_counter8>:	0x00000001
+0x200008fc <g_phase6_main_iwdg_reload_count>:	0x00000001
+[Inferior 1 (Remote target) detached]

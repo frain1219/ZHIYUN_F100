@@ -1,0 +1,8 @@
+using sysbus
+mach create "ZHIYUN_F100_PHASE6"
+machine LoadPlatformDescription @platforms/cpus/stm32f103.repl
+sysbus LoadBinary @/Users/milocheung/Documents/codeProject/ZHIYUN_F100/ZHIYUN_F100_Firmware/zhiyun_f100_apm32/.pio/build/apm32f103cb/firmware.bin 0x08000000
+cpu SP 0x20005000
+cpu PC 0x8000145
+machine StartGdbServer 4336
+logLevel 3

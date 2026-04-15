@@ -1,0 +1,72 @@
+#!/usr/bin/expect -f
+# Renode + GDB：先等待 "Continuing."，再等待断点或超时 Ctrl-C（避免误匹配旧 (gdb) 提示符）
+# 前置：localhost:3333 已有 Renode GDB server
+
+exp_internal 0
+set timeout 60
+
+if {[info exists env(GDB)]} {
+    set gdb $env(GDB)
+} else {
+    set gdb "arm-none-eabi-gdb"
+}
+
+spawn $gdb -n -q
+expect -re "\\(gdb\\)"
+
+send "set pagination off\r"
+expect -re "\\(gdb\\)"
+send "set confirm off\r"
+expect -re "\\(gdb\\)"
+send "set architecture armv3m\r"
+expect -re "\\(gdb\\)"
+
+send "target extended-remote localhost:3333\r"
+expect -re "\\(gdb\\)"
+
+send "set \$sp=0x20001620\r"
+expect -re "\\(gdb\\)"
+send "set \$pc=0x08006be9\r"
+expect -re "\\(gdb\\)"
+send "hbreak *0x080012e8\r"
+expect -re "\\(gdb\\)"
+send "monitor start\r"
+expect -re "\\(gdb\\)"
+
+puts stderr "\n[expect] continue -> wait Continuing. -> then Breakpoint or SIGINT\n"
+send "continue\r"
+
+# 必须看到 Continuing.，避免匹配 monitor start 之后残留的 (gdb)
+expect -re "Continuing\\."
+puts stderr "[expect] saw Continuing.\n"
+
+expect {
+    -re "Breakpoint" {
+        puts stderr "[expect] saw Breakpoint\n"
+    }
+    -re "0x080012e8" {
+        puts stderr "[expect] saw 0x080012e8 in text\n"
+    }
+    timeout {
+        puts stderr "[expect] no breakpoint text in ${timeout}s -> Ctrl-C\n"
+        send "\003"
+    }
+}
+
+expect -re "\\(gdb\\)"
+puts stderr "[expect] at gdb prompt after stop\n"
+
+send "printf \"PC=%#x r0=%#x r1=%#x r2=%#x r3=%#x\\n\", \$pc, \$r0, \$r1, \$r2, \$r3\r"
+expect -re "\\(gdb\\)"
+send "info registers\r"
+expect -re "\\(gdb\\)"
+send "x/4wx 0x200002c4\r"
+expect -re "\\(gdb\\)"
+send "x/8i \$pc\r"
+expect -re "\\(gdb\\)"
+
+send "dump binary memory renode_sram_20k.bin 0x20000000 0x20005000\r"
+expect -re "\\(gdb\\)"
+
+send "quit\r"
+expect eof

@@ -1,0 +1,17 @@
+0x080009b2 in UI_SPI1_PumpEightFramebufferSlices ()
+Hardware assisted breakpoint 1 at 0x8000700
+Hardware assisted breakpoint 2 at 0x800078a
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+=== Breaktrace snapshot ===
+Num     Type           Disp Enb Address    What
+1       hw breakpoint  keep y   0x08000700 <PD_GPIO_StateMachine+4>
+2       hw breakpoint  keep y   0x0800078a <PD_HelperSeq_3000tick_ThenPc13Gpio+2>
+/Users/milocheung/Documents/codeProject/ZHIYUN_F100/logs/renode-phase6/20260406_140937/phase6_pd_breaktrace.gdb:17: Error in sourced command file:
+Selected thread is running.
+(gdb) 
+Breakpoint 1, 0x08000700 in PD_GPIO_StateMachine ()
+Detaching from program: /Users/milocheung/Documents/codeProject/ZHIYUN_F100/ZHIYUN_F100_Firmware/zhiyun_f100_apm32/.pio/build/apm32f103cb/firmware.elf, Remote target
+[Inferior 1 (Remote target) detached]

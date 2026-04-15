@@ -1,0 +1,9 @@
+0x080013a0 in Phase6_StartupChain_Run ()
+Hardware assisted breakpoint 1 at 0x80008f8
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+/Users/milocheung/Documents/codeProject/ZHIYUN_F100/logs/renode-phase6/20260406_185531/phase6_pd_breaktrace.gdb:21: Error in sourced command file:
+Remote connection closed
+(gdb) 

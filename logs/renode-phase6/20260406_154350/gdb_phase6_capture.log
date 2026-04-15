@@ -1,0 +1,41 @@
+0x08000df4 in Phase6_UiEventRouter_Consume ()
+Starting emulation...
+=== Stimulate USB insert via LightPd pending-event SRAM injection ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+=== Force PD attached branch (fallback) ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+=== Phase6 Snapshot: PC/SP/LR ===
+pc             0x8000df4           0x8000df4 <Phase6_UiEventRouter_Consume+2>
+sp             0x20004f50          0x20004f50
+lr             0x8000967           134220135
+=== GPIOC_IDR (PC13 source) ===
+0x40011008:	0x00000000
+=== GPIOB_ODATA (PB3/PB11 observable state) ===
+0x40010c0c:	0x00000000
+=== GPIOB_BSRR / BRR shadow check ===
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== Phase6 PD state shadows (SRAM) ===
+0x2000051d <g_phase6_pd_pb3_state>:	0x00
+0x2000051c <g_phase6_pd_pb11_state>:	0x00
+0x20000560 <g_phase6_usb_attached>:	0x00000001
+0x20000564 <g_phase6_usb_insert_event_count>:	0x00000000
+0x20000518 <g_phase6_pd_gpio_count>:	0x00000000
+0x2000052c <g_phase6_protocol_lane_expand_count>:	0x00000001
+=== TMR1 registers (PWM) ===
+0x40012c00:	0x00000081
+0x40012c2c:	0x000004b0
+0x40012c34:	0x00000018
+0x40012c3c:	0x00000018
+=== TMR4_CNT (encoder source) ===
+0x40000824:	0x00000000
+[Inferior 1 (Remote target) detached]

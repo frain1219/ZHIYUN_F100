@@ -1,0 +1,7 @@
+0x080013d2 in Phase6_StartupChain_Run ()
+Breakpoint 1 at 0x80008f8
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+GDB 会话超时（>60s），已主动终止以避免卡住。

@@ -1,0 +1,30 @@
+0x08000b2e in Phase6_LightPd_ReadTraceSnapshot ()
+Hardware assisted breakpoint 1 at 0x8000700
+Hardware assisted breakpoint 2 at 0x800078a
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+
+Breakpoint 1, 0x08000700 in PD_GPIO_StateMachine ()
+=== Breaktrace snapshot ===
+Num     Type           Disp Enb Address    What
+1       hw breakpoint  keep y   0x08000700 <PD_GPIO_StateMachine+4>
+	breakpoint already hit 1 time
+2       hw breakpoint  keep y   0x0800078a <PD_HelperSeq_3000tick_ThenPc13Gpio+2>
+pc             0x8000700           0x8000700 <PD_GPIO_StateMachine+4>
+sp             0x20004f58          0x20004f58
+lr             0x8000a83           134220419
+=== GPIO register view ===
+0x40011008:	0x00000000
+0x40010c0c:	0x00000000
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== PD shadow/counter view ===
+0x20000554 <g_phase6_usb_attached>:	0x00000001
+0x20000520 <g_phase6_protocol_lane_expand_count>:	0x00000001
+0x2000050c <g_phase6_pd_gpio_count>:	0x00000000
+0x20000511 <g_phase6_pd_pb3_state>:	0x00
+0x20000510 <g_phase6_pd_pb11_state>:	0x00
+0x200004f4 <g_phase6_last_stage>:	0x00000002
+[Inferior 1 (Remote target) detached]

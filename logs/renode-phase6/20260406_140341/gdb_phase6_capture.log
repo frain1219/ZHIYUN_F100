@@ -1,0 +1,18 @@
+0x08000b2e in Phase6_LightPd_ReadTraceSnapshot ()
+Starting emulation...
+=== Stimulate USB insert via LightPd pending-event SRAM injection ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+=== Force PD attached branch (fallback) ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+/Users/milocheung/Documents/codeProject/ZHIYUN_F100/logs/renode-phase6/20260406_140341/phase6_capture.gdb:19: Error in sourced command file:
+Cannot change this setting while the inferior is running.
+(gdb) Detaching from program: /Users/milocheung/Documents/codeProject/ZHIYUN_F100/ZHIYUN_F100_Firmware/zhiyun_f100_apm32/.pio/build/apm32f103cb/firmware.elf, Remote target
+[Inferior 1 (Remote target) detached]

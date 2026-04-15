@@ -1,0 +1,20 @@
+# =============================================================================
+# Renode 脚本: APM32F103CBT6（智云 F100 固件）— 默认自动 start
+# 向量表: SP=0x20001620, Reset_Handler=0x08006BE9（Thumb）
+# OI-001 散载断点：请改用 apm32_f100_gdb_first.resc（先 GDB 再手动 start）
+# =============================================================================
+
+include @/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Renode/apm32_f100_core.resc
+
+echo "-------------------------------------------------------"
+echo "  ZHIYUN F100 / APM32F103 仿真已就绪（自动 start）"
+echo "  固件: ZHIYUN-F100-full.bin @ 0x08000000"
+echo "  GDB（另开终端 arm-none-eabi-gdb，勿在 Renode 本窗口输入）:"
+echo "    target extended-remote localhost:3333"
+echo "    set mi-async off   # inferior running 时先 interrupt"
+echo "    continue           # 仅 GDB；Renode 无此命令"
+echo "  暂停仿真: Renode 中 pause"
+echo "  散载前下断: include .../apm32_f100_gdb_first.resc"
+echo "-------------------------------------------------------"
+
+start

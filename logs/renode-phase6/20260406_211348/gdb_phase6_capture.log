@@ -1,0 +1,77 @@
+0x08001690 in Phase6_StartupChain_Run ()
+Starting emulation...
+=== Stimulate USB insert via LightPd pending-event SRAM injection ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+=== Force PD attached branch (fallback) ===
+warning: Invalid state, unable to determine sp alias, assuming msp.
+warning: Invalid state, unable to determine sp alias, assuming msp.
+Starting emulation...
+=== Phase6 Snapshot: PC/SP/LR ===
+pc             0x8001690           0x8001690 <Phase6_StartupChain_Run+164>
+sp             0x20004fe0          0x20004fe0
+lr             0x8001265           134222437
+=== GPIOC_IDR (PC13 source) ===
+0x40011008:	0x00000000
+=== GPIOB_ODATA (PB3/PB11 observable state) ===
+0x40010c0c:	0x00000000
+=== GPIOB_BSRR / BRR shadow check ===
+0x40010c10:	0x00000000
+0x40010c14:	0x00000000
+=== Phase6 PD state shadows (SRAM) ===
+0x200008b1 <g_phase6_pd_pb3_state>:	0x00
+0x200008b0 <g_phase6_pd_pb11_state>:	0x00
+0x20000944 <g_phase6_usb_attached>:	0x00000001
+0x20000948 <g_phase6_usb_insert_event_count>:	0x00000000
+0x200008ac <g_phase6_pd_gpio_count>:	0x00000000
+0x200008c0 <g_phase6_protocol_lane_expand_count>:	0x00000001
+=== TMR1 registers (PWM) ===
+0x40012c00:	0x00000000
+0x40012c2c:	0x0000ffff
+0x40012c34:	0x0000ffff
+0x40012c3c:	0x0000ffff
+=== TMR4_CNT (encoder source) ===
+0x40000824:	0x00000000
+=== SPI1 startup frame trace (23B) ===
+0x200009ec <g_phase6_spi1_startup_tx_count>:	0x00000000
+0x200009f8 <g_phase6_spi1_startup_done>:	0x00000000
+0x20000a00 <g_phase6_spi1_startup_last_byte>:	0x00000000
+0x200009dc <g_phase6_spi1_startup_cs_low_count>:	0x00000000
+0x200009fc <g_phase6_spi1_startup_cs_high_count>:	0x00000000
+0x200009e4 <g_phase6_spi1_startup_wait_timeout_count>:	0x00000000
+=== SPI1 runtime framepump cadence ===
+0x200008d0 <g_phase6_spi_flush_trigger_count>:	0x00000000
+0x200008c8 <g_phase6_spi_flush_skip_count>:	0x00000000
+=== SPI1 runtime cadence context (ticks/dirty) ===
+=== Scheduler vs PD-call tick parity (expect equal: one RunOnce == one PD block) ===
+0x200009d8 <g_phase6_scheduler_ticks>:	0x00000000
+0x2000055c <g_phase6_call_ticks>:	0x00000000
+0x2000089c <g_phase6_oled_last_flush_tick>:	0x00000000
+0x2000091c <g_phase6_ui_frame_dirty>:	0x00
+=== SysTick (Cortex-M) — OEM PD_PeriodicDispatchFromSysTick is /20 vs this counter; Phase6 main is busy-loop ===
+0xe000e010:	0x00000004
+0xe000e014:	0x00000000
+0xe000e018:	0x00ffffff
+=== main->SPI pump bridge counters ===
+0x200009d0 <g_phase6_mainloop_spi_pump_request_count>:	0x00000000
+0x200009d4 <g_phase6_mainloop_spi_pump_consumed_count>:	0x00000000
+=== main loop semantic counters (Step8 / IWDG reload) ===
+0x2000094c <g_phase6_main_boot_phase_counter8>:	0x00000000
+0x20000950 <g_phase6_main_iwdg_reload_count>:	0x00000000
+=== startup chain magic/IWDT anchors ===
+0x200009f0 <g_phase6_boot_magic_word_shadow>:	0x00000000
+0x200009e8 <g_phase6_boot_magic_matched>:	0x00000000
+0x200009e0 <g_phase6_iwdt_started>:	0x00000000
+0x200009f4 <g_phase6_iwdt_reload_shadow>:	0x00000000
+=== USB upgrade guard risk counters ===
+0x20000a0c <g_phase6_usb_upgrade_guard_init>:	0x00000000
+0x20000a14 <g_phase6_usb_upgrade_preflight_ready>:	0x00000000
+0x20000a08 <g_phase6_usb_upgrade_preflight_fail_count>:	0x00000000
+0x20000a10 <g_phase6_usb_upgrade_flash_write_attempt_count>:	0x00000000
+[Inferior 1 (Remote target) detached]

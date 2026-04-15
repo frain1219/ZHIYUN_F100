@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Release Notes for APM32F10x SDK</title>
+    <style>
+        body { font-family: "Segoe UI", Arial, sans-serif; font-size: 14px; background: #fff; color: #333; margin: 20px; }
+        h1 { font-size: 24px; color: #03234c; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        h2 { font-size: 18px; color: #03234c; margin-top: 20px; }
+        .collapse { margin-bottom: 10px; }
+        .collapse input[type=checkbox] { display: none; }
+        .collapse label { cursor: pointer; color: #2cd1a2; font-weight: bold; display: block; background: #f5f5f5; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .collapse label:hover { background: #e8e8e8; }
+        .collapse input[type=checkbox]:checked + label { background: #03234c; color: #fff; border-color: #03234c; }
+        .collapse .content { display: none; padding: 15px; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px; }
+        .collapse input[type=checkbox]:checked ~ .content { display: block; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 5px; }
+        .header-title { text-align: center; margin-bottom: 30px; }
+        mark { background: #A6FFE6; color: #03234c; padding: 0.2em; }
+    </style>
+</head>
+<body>
+
+<div class="header-title">
+    <h1>Release Notes for <mark>&nbsp;APM32F10x SDK&nbsp;</mark></h1>
+</div>
+
+<h1 id="update-history">Update History</h1>
+
+<!-- V2.0.0 / 03-23-2026 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v200-2026" checked>
+    <label for="collapse-v200-2026">V2.0.0 / 03-23-2026</label>
+    <div class="content">
+        <ul>
+            <li>Update file hierarchy directory.</li>
+            <li>Update Library.</li>
+            <li>Update USB Library in Middlewares.</li>
+            <li>Update Example.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.8 / 01-12-2022 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v180-2022">
+    <label for="collapse-v180-2022">V1.8 / 01-12-2022</label>
+    <div class="content">
+        <ul>
+            <li>Update Library for 1.0.4.</li>
+            <li>Update USB_OTG_Lib Library.</li>
+            <li>Update APM32F10x_ETH_Driver Library.</li>
+            <li>Added Eclipse Support.</li>
+            <li>Added Other Example.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.7 / 04-08-2022 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v170">
+    <label for="collapse-v170">V1.7 / 04-08-2022</label>
+    <div class="content">
+        <ul>
+            <li>Update pack for 1.0.9.</li>
+            <li>Update Library for 1.0.3.</li>
+            <li>Added APM32F10X_CL Support.</li>
+            <li>Update the name of SMC from EMMC to SMC in EMMC driver.</li>
+            <li>Added OTG and ETH Driver and Example.</li>
+            <li>Added RTOS, IAP, TMR_32BitCount, TMR_EncoderInterface, USART_IrDA, USART_LIN Example.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.6 / 24-02-2022 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v160">
+    <label for="collapse-v160">V1.6 / 24-02-2022</label>
+    <div class="content">
+        <ul>
+            <li>Update pack for 1.0.8.</li>
+            <li>Update Library for 1.0.2.</li>
+            <li>Added IAR Support.</li>
+            <li>Added USB_Device_Lib.</li>
+            <li>Added USB Example.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.5 / 20-05-2021 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v150">
+    <label for="collapse-v150">V1.5 / 20-05-2021</label>
+    <div class="content">
+        <ul>
+            <li>Update pack for 1.0.7.</li>
+            <li>Added Board_APM32F103VCS_MINI drive.</li>
+            <li>Update Example:</li>
+            <ul>
+                <li>Added DMC_SDRAM example in EMMC module.</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.4 / 14-04-2021 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v140">
+    <label for="collapse-v140">V1.4 / 14-04-2021</label>
+    <div class="content">
+        <ul>
+            <li>Update Library for 1.0.1:</li>
+            <ul>
+                <li>Change the register name to match APM32F103 user manual.</li>
+            </ul>
+            <li>Update pack for 1.0.6:</li>
+            <ul>
+                <li>Support AMP32F103CC, Update APM32F103xx.svd.</li>
+            </ul>
+            <li>Update Examples:</li>
+            <ul>
+                <li>Added CAN TwoBoards communication.</li>
+            </ul>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.3 / 22-08-2020 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v130">
+    <label for="collapse-v130">V1.3 / 22-08-2020</label>
+    <div class="content">
+        <ul>
+            <li>Correct DBGMCU->IDCODE_B.REVID bitOffset and bitWidth.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.2 / 20-07-2020 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v120">
+    <label for="collapse-v120">V1.2 / 20-07-2020</label>
+    <div class="content">
+        <ul>
+            <li>Correct svd file in the pack.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.1 / 06-06-2020 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v110">
+    <label for="collapse-v110">V1.1 / 06-06-2020</label>
+    <div class="content">
+        <ul>
+            <li>Support AMP32F103xE.</li>
+            <li>Added devices.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- V1.0 / 19-01-2020 -->
+<div class="collapse">
+    <input type="checkbox" id="collapse-v100">
+    <label for="collapse-v100">V1.0 / 19-01-2020</label>
+    <div class="content">
+        <ul>
+            <li>First Release version of APM32F10x SDK.</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

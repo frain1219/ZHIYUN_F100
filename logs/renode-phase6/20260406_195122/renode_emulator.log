@@ -1,0 +1,10 @@
+19:51:24.0714 [INFO] Loaded monitor commands from: /Applications/Renode.app/Contents/MacOS/scripts/monitor.py
+19:51:24.0797 [INFO] Monitor available in telnet mode on port 59165
+19:51:24.1634 [INFO] Including script(s): /Users/milocheung/Documents/codeProject/ZHIYUN_F100/logs/renode-phase6/20260406_195122/phase6_dynamic.resc
+19:51:24.1747 [INFO] System bus created.
+19:51:25.4111 [WARNING] Translation cache size 536870912 is larger than maximum allowed 134217728. It will be clamped to maximum
+19:51:25.6293 [INFO] sysbus: Loaded SVD: /var/folders/pb/2mgyljr14px5tqdvvcyvx_ch0000gn/T/renode-24811/3b01eab3-ae12-4f62-b988-9fd197aed68d.tmp. Name: STM32F103. Description: STM32F103.
+19:51:25.6425 [INFO] sysbus: Loading block of 7280 bytes length at 0x8000000.
+19:51:25.9257 [INFO] ZHIYUN_F100_PHASE6: CPUs: ["ZHIYUN_F100_PHASE6.cpu"] were added to a new GDB server created on port :4336
+19:51:25.9259 [INFO] ZHIYUN_F100_PHASE6: GDB server with all CPUs started on port :4336
+19:51:34.9922 [ERROR] cpu: Syncing time should be done from CPU thread only. Ignoring the operation

@@ -1,0 +1,17 @@
+# apm32_f100 公共段：建机、映像、向量、GDB 端口（不含 start）
+# 由 apm32_f100.resc / apm32_f100_gdb_first.resc include。
+
+using sysbus
+
+mach create "ZHIYUN_F100"
+
+machine LoadPlatformDescription @platforms/cpus/stm32f103.repl
+
+sysbus LoadBinary @/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Renode/ZHIYUN-F100-full.bin 0x08000000
+
+cpu SP 0x20001620
+cpu PC 0x08006BE9
+
+machine StartGdbServer 3333
+
+logLevel 3
