@@ -22,7 +22,7 @@ static uint8_t g_observed_transition = 0U;
 static BypassFsmStats g_stats;
 
 static const ProbePinDef *g_pin_pc13 = NULL; /* PE0 */
-static const ProbePinDef *g_pin_pb3 = NULL;  /* PG1 */
+static const ProbePinDef *g_pin_pb3 = NULL;  /* PE2 */
 
 static void reset_runtime(void)
 {
@@ -34,7 +34,7 @@ static void reset_runtime(void)
 void BypassFsm_Init(void)
 {
     g_pin_pc13 = ProbePins_FindByName("PE0");
-    g_pin_pb3 = ProbePins_FindByName("PG1");
+    g_pin_pb3 = ProbePins_FindByName("PE2");
     g_enabled = 0U;
     g_last_trigger_ms = 0U;
     g_last_pc13 = 0U;
@@ -95,7 +95,7 @@ void BypassFsm_Tick(uint32_t now_ms)
          * - minimum interval to avoid overdriving shared line
          */
         if (pb3 == 0U && (now_ms - g_last_trigger_ms) >= 120U) {
-            if (InjectEngine_Set("PF1", 1U, 0U) == INJECT_OK) {
+            if (InjectEngine_Set("PE1", 1U, 0U) == INJECT_OK) {
                 g_stats.trigger_count++;
                 g_state = FSM_DRIVE_HIGH;
                 g_state_deadline_ms = now_ms + 8U;
@@ -106,7 +106,7 @@ void BypassFsm_Tick(uint32_t now_ms)
         break;
     case FSM_DRIVE_HIGH:
         if ((int32_t)(now_ms - g_state_deadline_ms) >= 0) {
-            if (InjectEngine_Set("PF1", 0U, 0U) == INJECT_OK) {
+            if (InjectEngine_Set("PE1", 0U, 0U) == INJECT_OK) {
                 g_state = FSM_DRIVE_LOW;
                 g_state_deadline_ms = now_ms + 8U;
             } else {
@@ -117,7 +117,7 @@ void BypassFsm_Tick(uint32_t now_ms)
         break;
     case FSM_DRIVE_LOW:
         if ((int32_t)(now_ms - g_state_deadline_ms) >= 0) {
-            (void)InjectEngine_Release("PF1");
+            (void)InjectEngine_Release("PE1");
             if (g_observed_transition != 0U) {
                 g_stats.success_count++;
             } else {
@@ -161,7 +161,7 @@ bool BypassFsm_HandleCommand(const char *args, char *out, uint16_t out_size)
 
     if (strcmp(sub, "OFF") == 0) {
         g_enabled = 0U;
-        (void)InjectEngine_Release("PF1");
+        (void)InjectEngine_Release("PB8");
         reset_runtime();
         (void)snprintf(out, out_size, "{\"type\":\"bypass_fsm\",\"implemented\":1,\"enabled\":0}");
         return true;

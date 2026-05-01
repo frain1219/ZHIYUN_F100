@@ -37,7 +37,7 @@ static void SystemClock_Config(void)
     RCC_OscInitStruct.HSEState = RCC_HSE_ON;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-    RCC_OscInitStruct.PLL.PLLM = 25;
+    RCC_OscInitStruct.PLL.PLLM = 8;
     RCC_OscInitStruct.PLL.PLLN = 336;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
     RCC_OscInitStruct.PLL.PLLQ = 7;
@@ -77,20 +77,23 @@ static void Exti_Init(void)
     if (pin != NULL) {
         (void)ProbePins_EnableInterrupt(pin);
     }
-    /* PF1 not bonded in LQFP100 — no EXTI1 setup */
-    pin = ProbePins_FindByName("PG2");
+    pin = ProbePins_FindByName("PE1");
     if (pin != NULL) {
         (void)ProbePins_EnableInterrupt(pin);
     }
-    pin = ProbePins_FindByName("PG5");
+    pin = ProbePins_FindByName("PE2");
     if (pin != NULL) {
         (void)ProbePins_EnableInterrupt(pin);
     }
-    pin = ProbePins_FindByName("PG6");
+    pin = ProbePins_FindByName("PC1");
     if (pin != NULL) {
         (void)ProbePins_EnableInterrupt(pin);
     }
-    pin = ProbePins_FindByName("PG7");
+    pin = ProbePins_FindByName("PC2");
+    if (pin != NULL) {
+        (void)ProbePins_EnableInterrupt(pin);
+    }
+    pin = ProbePins_FindByName("PC3");
     if (pin != NULL) {
         (void)ProbePins_EnableInterrupt(pin);
     }
@@ -117,7 +120,8 @@ static void Exti_Init(void)
 
     HAL_NVIC_SetPriority(EXTI0_IRQn, 5U, 0U);
     HAL_NVIC_EnableIRQ(EXTI0_IRQn);
-    /* EXTI1 not enabled: PF1 not bonded in LQFP100 */
+    HAL_NVIC_SetPriority(EXTI1_IRQn, 5U, 0U);
+    HAL_NVIC_EnableIRQ(EXTI1_IRQn);
     HAL_NVIC_SetPriority(EXTI2_IRQn, 5U, 0U);
     HAL_NVIC_EnableIRQ(EXTI2_IRQn);
     HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5U, 0U);
@@ -201,7 +205,10 @@ void EXTI0_IRQHandler(void)
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
 }
 
-/* EXTI1_IRQHandler omitted: PF1 not bonded in LQFP100 */
+void EXTI1_IRQHandler(void)
+{
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
+}
 
 void EXTI2_IRQHandler(void)
 {
@@ -231,14 +238,16 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     case GPIO_PIN_0:
         port = GPIOE; /* PE0 */
         break;
-    /* GPIO_PIN_1 (PF1) not bonded in LQFP100 — no case */
+    case GPIO_PIN_1:
+        port = GPIOE; /* PE1 */
+        break;
     case GPIO_PIN_2:
-        port = GPIOG; /* PG2 */
+        port = GPIOE; /* PE2 */
         break;
     case GPIO_PIN_5:
     case GPIO_PIN_6:
     case GPIO_PIN_7:
-        port = GPIOG; /* PG5/PG6/PG7 */
+        port = GPIOC; /* PC1/PC2/PC3 (remap from PG5/PG6/PG7) */
         break;
     case GPIO_PIN_8:
     case GPIO_PIN_9:

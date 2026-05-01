@@ -14,12 +14,12 @@ typedef struct {
     uint16_t trigger_high;
 } ProbeAdcPin;
 
-static ADC_HandleTypeDef g_hadc3;
+static ADC_HandleTypeDef g_hadc1;
 static ProbeAdcPin g_adc_pins[] = {
-    {"PF3", ADC_CHANNEL_9, 0U, 0U, 0U, 4095U},
-    {"PF4", ADC_CHANNEL_14, 0U, 0U, 0U, 4095U},
-    {"PF5", ADC_CHANNEL_15, 0U, 0U, 0U, 4095U},
-    {"PF6", ADC_CHANNEL_4, 0U, 0U, 0U, 4095U},
+    {"PA0", ADC_CHANNEL_0, 0U, 0U, 0U, 4095U},
+    {"PA1", ADC_CHANNEL_1, 0U, 0U, 0U, 4095U},
+    {"PA2", ADC_CHANNEL_2, 0U, 0U, 0U, 4095U},
+    {"PA3", ADC_CHANNEL_3, 0U, 0U, 0U, 4095U},
 };
 
 static ProbeAdcEvent g_events[ADC_EVENT_QUEUE_SIZE];
@@ -59,20 +59,20 @@ static void queue_event(uint32_t now_ms, uint32_t now_us, const char *pin_name, 
 
 void ProbeAdc_Init(void)
 {
-    __HAL_RCC_ADC3_CLK_ENABLE();
-    g_hadc3.Instance = ADC3;
-    g_hadc3.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
-    g_hadc3.Init.Resolution = ADC_RESOLUTION_12B;
-    g_hadc3.Init.ScanConvMode = DISABLE;
-    g_hadc3.Init.ContinuousConvMode = DISABLE;
-    g_hadc3.Init.DiscontinuousConvMode = DISABLE;
-    g_hadc3.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-    g_hadc3.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-    g_hadc3.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-    g_hadc3.Init.NbrOfConversion = 1;
-    g_hadc3.Init.DMAContinuousRequests = DISABLE;
-    g_hadc3.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-    (void)HAL_ADC_Init(&g_hadc3);
+    __HAL_RCC_ADC1_CLK_ENABLE();
+    g_hadc1.Instance = ADC1;
+    g_hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
+    g_hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+    g_hadc1.Init.ScanConvMode = DISABLE;
+    g_hadc1.Init.ContinuousConvMode = DISABLE;
+    g_hadc1.Init.DiscontinuousConvMode = DISABLE;
+    g_hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+    g_hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+    g_hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    g_hadc1.Init.NbrOfConversion = 1;
+    g_hadc1.Init.DMAContinuousRequests = DISABLE;
+    g_hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+    (void)HAL_ADC_Init(&g_hadc1);
 }
 
 bool ProbeAdc_ReadPin(const char *pin_name, uint16_t *out_value)
@@ -86,19 +86,19 @@ bool ProbeAdc_ReadPin(const char *pin_name, uint16_t *out_value)
     cfg.Channel = p->channel;
     cfg.Rank = 1;
     cfg.SamplingTime = ADC_SAMPLETIME_84CYCLES;
-    if (HAL_ADC_ConfigChannel(&g_hadc3, &cfg) != HAL_OK) {
+    if (HAL_ADC_ConfigChannel(&g_hadc1, &cfg) != HAL_OK) {
         return false;
     }
-    if (HAL_ADC_Start(&g_hadc3) != HAL_OK) {
+    if (HAL_ADC_Start(&g_hadc1) != HAL_OK) {
         return false;
     }
-    if (HAL_ADC_PollForConversion(&g_hadc3, 2U) != HAL_OK) {
-        (void)HAL_ADC_Stop(&g_hadc3);
+    if (HAL_ADC_PollForConversion(&g_hadc1, 2U) != HAL_OK) {
+        (void)HAL_ADC_Stop(&g_hadc1);
         return false;
     }
-    *out_value = (uint16_t)HAL_ADC_GetValue(&g_hadc3);
+    *out_value = (uint16_t)HAL_ADC_GetValue(&g_hadc1);
     p->last = *out_value;
-    (void)HAL_ADC_Stop(&g_hadc3);
+    (void)HAL_ADC_Stop(&g_hadc1);
     return true;
 }
 

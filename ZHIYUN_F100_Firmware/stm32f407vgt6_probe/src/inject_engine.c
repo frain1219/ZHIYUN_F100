@@ -294,10 +294,10 @@ InjectResult InjectEngine_RunScene(const char *scene_name)
         return INJECT_ERR_BAD_ARGS;
     }
     if (strcmp(scene_name, "PD_ATTACH_BLIP") == 0) {
-        return InjectEngine_PlayScript("PF1,1,2000;PF1,0,2000");
+        return InjectEngine_PlayScript("PB8,1,2000;PB8,0,2000");
     }
     if (strcmp(scene_name, "KEY_RIGHT_TAP") == 0) {
-        return InjectEngine_PlayScript("PG2,1,30000;PG2,0,30000");
+        return InjectEngine_PlayScript("PC0,1,30000;PC0,0,30000");
     }
     if (strcmp(scene_name, "PA0_PULSE2") == 0) {
         return InjectEngine_PlayScript("PE5,1,20000;PE5,0,20000;PE5,1,20000;PE5,0,20000");

@@ -88,7 +88,7 @@ static void send_err(const char *cmd, const char *reason)
 
 static void send_pin_list(void)
 {
-    char out[512];
+    char out[1024];
     size_t count = 0;
     const ProbePinDef *table = ProbePins_GetTable(&count);
     uint16_t used = 0;
@@ -185,7 +185,7 @@ static void send_self_check(void)
     (void)snprintf(
         out,
         sizeof(out),
-        "{\"type\":\"self_check\",\"fw\":\"f407_probe\",\"pins_total\":%u,\"pins_injectable\":%u,\"pins_monitor_only\":%u,\"pins_forbidden_drive\":%u,\"pins_analog_only\":%u,\"exti_watch\":[\"PE0\",\"PG2\",\"PG5\",\"PG6\",\"PG7\",\"PE8\",\"PE9\",\"PE10\",\"PE11\",\"PE12\"],\"note\":\"software-layer check only; no physical wiring asserted\"}",
+        "{\"type\":\"self_check\",\"fw\":\"f407_probe\",\"pins_total\":%u,\"pins_injectable\":%u,\"pins_monitor_only\":%u,\"pins_forbidden_drive\":%u,\"pins_analog_only\":%u,\"exti_watch\":[\"PE0\",\"PC0\",\"PC1\",\"PC2\",\"PC3\",\"PE8\",\"PE9\",\"PE10\",\"PE11\",\"PE12\"],\"note\":\"software-layer check only; no physical wiring asserted\"}",
         (unsigned)count,
         (unsigned)injectable,
         (unsigned)monitor_only,

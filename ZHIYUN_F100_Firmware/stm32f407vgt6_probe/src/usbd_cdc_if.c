@@ -6,7 +6,7 @@
 #define CDC_RX_BUFFER_SIZE 256U
 #define CDC_APP_RX_RING_SIZE 1024U
 #define CDC_TX_QUEUE_SIZE 16U
-#define CDC_TX_FRAME_MAX 256U
+#define CDC_TX_FRAME_MAX 1024U
 
 static int8_t CDC_Init(void);
 static int8_t CDC_DeInit(void);
@@ -28,7 +28,7 @@ static volatile uint16_t g_rx_head = 0;
 static volatile uint16_t g_rx_tail = 0;
 
 static volatile uint8_t g_tx_busy = 0;
-static uint8_t g_tx_buffer[512];
+static uint8_t g_tx_buffer[1024];
 static uint8_t g_tx_queue[CDC_TX_QUEUE_SIZE][CDC_TX_FRAME_MAX];
 static uint16_t g_tx_len[CDC_TX_QUEUE_SIZE];
 static volatile uint8_t g_tx_head = 0;

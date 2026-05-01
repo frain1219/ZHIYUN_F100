@@ -195,7 +195,7 @@
                 "STM32F4",
                 "STM32F407xx",
                 "STM32F40_41xxx",
-                "HSE_VALUE=25000000",
+                "HSE_VALUE=8000000",
                 "USE_HAL_DRIVER",
                 "F_CPU=168000000L",
                 ""
