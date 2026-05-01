@@ -7,6 +7,79 @@
 
 > 规则：每条记录包含「日期 / 结论 / 证据路径 / 可信度」
 
+### 2026-05-02
+
+- 结论：**✅ F103启动检测机制分析完成 - F103已成功启动但SPI1未初始化**。通过手动复位和深入调试,发现:
+  1. **F103已成功启动**:
+     - ✅ PC = 0x0800570C (延时函数,不再是.bss清零循环)
+     - ✅ 已完成C运行时初始化
+     - ✅ 已到达main函数 (0x08002E74)
+     - ✅ 时钟系统已配置 (RCC_CR = 0x00019B83, HSI/HSE/PLL稳定)
+     - ✅ 复位标志完整 (RCC_CSR = 0x1C000000, SFTRSTF/PORRSTF/PINRSTF)
+  2. **SPI1仍未初始化**:
+     - ❌ SPI1寄存器全为0 (CR1/CR2/SR/DR = 0x00000000)
+     - ❌ SPI1时钟未使能 (RCC_APB2ENR bit 12 = 0)
+     - ❌ GPIO未配置为SPI复用 (PA5/PA6/PA7配置为通用推挽输出0x4,应为复用推挽输出0xB)
+  3. **Main函数执行流程**:
+     - 已执行多个初始化函数 (13个子函数调用)
+     - SPI1_StartupSequence在0x08002F2C被调用
+     - 栈返回地址0x08002FC5 > SPI1初始化位置0x08002F2C
+     - 当前在延时函数中 (循环计数器 = 4797)
+  4. **启动检测机制发现**:
+     - F103需要手动复位才能完成C运行时初始化
+     - 可能需要稳定的电源或特定硬件条件
+     - 启动流程: POR → Reset_Handler → SystemInit → C Runtime → main
+  5. **矛盾分析**:
+     - F103已执行过SPI1_StartupSequence调用位置
+     - 但SPI1寄存器仍然全为0
+     - 可能原因: SPI1初始化失败/被条件跳过/需要特定硬件条件
+  证据路径：`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Cursor_Knowledge_Base/OLED_Hardware_Verification_Report.md`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/check_f103_reset_status.gdb`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/analyze_startup_deep.gdb`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/check_spi1_status.gdb`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/analyze_main_flow.gdb`
+  可信度：高(详细调试和寄存器分析)
+  **状态**: ✅ **F103启动问题已解决 - 需要继续调查SPI1初始化失败原因**
+
+- 结论：**OLED显示部分硬件层逆向验证 - 发现F103卡在C运行时初始化阶段**。基于F407侧车平台和STLINK调试进行深入验证,发现根本问题:
+  1. **F407侧车验证**: 
+     - F407连接成功,OLED Sniffer启动成功
+     - 检测到SPI总线活动(边沿计数2616,事务计数435)
+     - 字节解码失败(字节计数0),只捕获了CS/RES/DC边沿,**SCK/PE8和MOSI/PE9边沿未捕获**
+     - 边沿数据分析确认: SCK=0边沿, MOSI=0边沿, CS=17边沿, RES=17边沿, DC=16边沿
+  2. **STLINK调试F103发现根本原因**:
+     - ✅ F103正在运行 (PC = 0x08006A4E)
+     - ❌ **F103卡在C运行时.bss清零循环** (地址0x08006A48-0x08006A52)
+     - ❌ **未到达main函数** (main地址0x08002E74)
+     - ❌ **SPI1完全未启用** (因为未执行到main函数中的SPI1_StartupSequence)
+     - **循环变量**: r1=0x20003F1C (SRAM地址), r2=0x9DC=2524字节 (剩余要清零), r3=0
+  3. **按键触发测试结果**:
+     - 注入PA1(PB6)和PB4(PC0)按键信号
+     - SPI活动增加(边沿+2224,事务+370),但字节计数仍为0
+     - SPI1寄存器状态未改变,说明按键触发未能导致SPI1初始化
+  4. **根本原因**: **F103固件未完成C运行时初始化,卡在.bss段清零循环,因此未到达main函数,SPI1未被初始化,没有SCK和MOSI信号输出**
+  5. **可能原因**:
+     - .bss段过大,清零时间过长
+     - F103时钟配置问题,执行速度缓慢
+     - 硬件等待状态或异常干扰
+     - F103可能需要复位或重新上电
+  证据路径：`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Cursor_Knowledge_Base/OLED_Hardware_Verification_Report.md`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/test_oled_sniffer.py`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/check_f103_oled_spi.gdb`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/check_pc_detail.gdb`、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/scripts/analyze_f407_edges.py`
+  可信度：高(问题确认、根本原因和详细分析)
+  **状态**: ⚠️ **硬件层验证未完成闭合 - F103卡在C运行时初始化,需要解决F103启动问题**
+
+- 结论：**OLED显示部分逆向分析完成**。基于固件静态分析,完成对OLED显示部分的全面分析:
+  1. **初始化序列分析**: 23字节SSD1306命令序列 @ `0x080041B0` 已与数据手册逐条对照,匹配度高
+  2. **SPI通信分析**: 硬件连接(PA5/PA7/PB10等)已定义,事务格式(8×(3B+96B))已明确
+  3. **帧缓冲机制分析**: `SPI1_PumpEightFramebufferSlices` @ `0x08004258` 刷新逻辑已分析
+  4. **UI状态机分析**: `UI_OLED_MainStateMachine` @ `0x0800D89C` 主状态机已深入分析
+  5. **侧车监听能力**: F407固件已具备`OLED_SNIFF_*`命令,支持SPI事务聚合与自动总线识别
+  证据路径：`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Cursor_Knowledge_Base/04_Protocol_Reverse.md` §2.4、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Cursor_Knowledge_Base/02_Hardware_Init.md` §SPI1、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Cursor_Knowledge_Base/03_Function_Modules.md` §1、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Document/APM32F103CB_to_STM32F407V_Wiring.md` §3.3、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/ZHIYUN_F100_Firmware/stm32f407vgt6_probe/docs/F407_Probe_Firmware_Reverse_Guide.md` §2.6
+  可信度：高(静态分析)
+
+- 结论：确认OLED驱动芯片为**SSD1306族**(128×64 SPI),基于以下证据:
+  - 23字节初始化序列与SSD1306命令集高度匹配(Display OFF/ON, Contrast, MUX Ratio, COM配置等)
+  - 唯一例外`AD 8B`为电荷泵变体,不否定SSD1306族判定
+  - 运行期事务格式符合SPI OLED典型模式
+  - FPC料号`02832-MF1-B`与尺寸测量支持128×64判定
+  证据路径：`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Cursor_Knowledge_Base/04_Protocol_Reverse.md` §2.4、§2.7、`/Users/milocheung/Documents/codeProject/ZHIYUN_F100/Document/Zhiyun_F100_Repair_Notes.md` §6.1
+  可信度：高(命令语义);中(COG具体型号)
+
 ### 2026-04-07
 
 - 结论：完成 **F407 侧车固件第一轮收敛**：修复 EXTI 事件归属歧义（由仅 `gpio_pin` 匹配改为 `port+pin` 精确匹配），降低同编号不同端口时的误记风险。  
