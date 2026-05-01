@@ -67,6 +67,7 @@ static void LED0_Init(void)
     g.Pull = GPIO_NOPULL;
     g.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(LED0_GPIO_PORT, &g);
+    HAL_GPIO_WritePin(LED0_GPIO_PORT, LED0_PIN, GPIO_PIN_SET); /* 初始灭 */
 }
 
 static void Exti_Init(void)
