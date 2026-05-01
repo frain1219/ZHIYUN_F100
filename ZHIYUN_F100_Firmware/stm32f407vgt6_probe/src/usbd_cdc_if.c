@@ -35,6 +35,7 @@ static volatile uint8_t g_tx_head = 0;
 static volatile uint8_t g_tx_tail = 0;
 static uint16_t g_tx_depth_max = 0;
 static uint32_t g_tx_drop_count = 0;
+static volatile uint8_t g_cdc_connected = 0;
 
 static uint8_t tx_depth(void)
 {
@@ -78,6 +79,7 @@ static int8_t CDC_Init(void)
 
 static int8_t CDC_DeInit(void)
 {
+    g_cdc_connected = 0U;
     return (int8_t)USBD_OK;
 }
 
@@ -88,8 +90,11 @@ static int8_t CDC_Control(uint8_t cmd, uint8_t *pbuf, uint16_t length)
     switch (cmd) {
         case CDC_SET_LINE_CODING:
         case CDC_GET_LINE_CODING:
-        case CDC_SET_CONTROL_LINE_STATE:
         case CDC_SEND_BREAK:
+            break;
+        case CDC_SET_CONTROL_LINE_STATE:
+            g_cdc_connected = (pbuf[0] & 0x01U) ? 1U : 0U;
+            break;
         default:
             break;
     }
@@ -195,4 +200,9 @@ void CDC_ResetTxStats(void)
 {
     g_tx_depth_max = 0;
     g_tx_drop_count = 0;
+}
+
+bool CDC_IsConnected(void)
+{
+    return g_cdc_connected != 0U;
 }

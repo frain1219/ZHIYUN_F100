@@ -76,10 +76,7 @@ static void Exti_Init(void)
     if (pin != NULL) {
         (void)ProbePins_EnableInterrupt(pin);
     }
-    pin = ProbePins_FindByName("PF1");
-    if (pin != NULL) {
-        (void)ProbePins_EnableInterrupt(pin);
-    }
+    /* PF1 not bonded in LQFP100 — no EXTI1 setup */
     pin = ProbePins_FindByName("PG2");
     if (pin != NULL) {
         (void)ProbePins_EnableInterrupt(pin);
@@ -119,8 +116,7 @@ static void Exti_Init(void)
 
     HAL_NVIC_SetPriority(EXTI0_IRQn, 5U, 0U);
     HAL_NVIC_EnableIRQ(EXTI0_IRQn);
-    HAL_NVIC_SetPriority(EXTI1_IRQn, 5U, 0U);
-    HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+    /* EXTI1 not enabled: PF1 not bonded in LQFP100 */
     HAL_NVIC_SetPriority(EXTI2_IRQn, 5U, 0U);
     HAL_NVIC_EnableIRQ(EXTI2_IRQn);
     HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5U, 0U);
@@ -150,12 +146,20 @@ int main(void)
 
     uint32_t last_led = 0;
     uint32_t last_sample = 0;
+    uint8_t last_cdc_connected = 0;
 
     for (;;) {
         uint32_t now = HAL_GetTick();
         uint32_t now_us = ProbeTime_GetUs();
 
-        if ((now - last_led) >= 500U) {
+        uint8_t cdc_now = CDC_IsConnected() ? 1U : 0U;
+        if (cdc_now && !last_cdc_connected) {
+            CDC_TransmitLine("{\"type\":\"welcome\",\"fw\":\"f407_probe\",\"msg\":\"connected, send HELP for commands\"}");
+        }
+        last_cdc_connected = cdc_now;
+
+        uint32_t led_interval = cdc_now ? 200U : 500U;
+        if ((now - last_led) >= led_interval) {
             HAL_GPIO_TogglePin(LED0_GPIO_PORT, LED0_PIN);
             last_led = now;
         }
@@ -196,10 +200,7 @@ void EXTI0_IRQHandler(void)
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
 }
 
-void EXTI1_IRQHandler(void)
-{
-    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
-}
+/* EXTI1_IRQHandler omitted: PF1 not bonded in LQFP100 */
 
 void EXTI2_IRQHandler(void)
 {
@@ -229,9 +230,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     case GPIO_PIN_0:
         port = GPIOE; /* PE0 */
         break;
-    case GPIO_PIN_1:
-        port = GPIOF; /* PF1 */
-        break;
+    /* GPIO_PIN_1 (PF1) not bonded in LQFP100 — no case */
     case GPIO_PIN_2:
         port = GPIOG; /* PG2 */
         break;

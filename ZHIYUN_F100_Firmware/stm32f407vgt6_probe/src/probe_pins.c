@@ -7,8 +7,7 @@ static const ProbePinDef g_probe_pins[] = {
     {"PE5", GPIOE, GPIO_PIN_5, PROBE_PIN_INJECTABLE, false, "F103 PA0 control"},
     {"PE6", GPIOE, GPIO_PIN_6, PROBE_PIN_INJECTABLE, false, "F103 PA1 input"},
     {"PE7", GPIOE, GPIO_PIN_7, PROBE_PIN_MONITOR_ONLY, false, "F103 PA2 pwm"},
-    {"PF1", GPIOF, GPIO_PIN_1, PROBE_PIN_INJECTABLE, false, "F103 PB11 PD GPIO"},
-    {"PG1", GPIOG, GPIO_PIN_1, PROBE_PIN_MONITOR_ONLY, false, "F103 PB3 VS_EN"},
+    /* PF1 / PG1: not bonded in STM32F407VGT6 LQFP100 package */
     {"PG2", GPIOG, GPIO_PIN_2, PROBE_PIN_INJECTABLE, false, "F103 PB4 key"},
     {"PG5", GPIOG, GPIO_PIN_5, PROBE_PIN_MONITOR_ONLY, false, "F103 PB5 MO_PWM"},
     {"PG6", GPIOG, GPIO_PIN_6, PROBE_PIN_MONITOR_ONLY, false, "F103 PB6 encoder A"},

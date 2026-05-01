@@ -10,6 +10,7 @@ extern USBD_CDC_ItfTypeDef USBD_Interface_fops_FS;
 bool CDC_ReadByte(uint8_t *out);
 bool CDC_TransmitLine(const char *line);
 bool CDC_TransmitRaw(const uint8_t *data, uint16_t len);
+bool CDC_IsConnected(void);
 void CDC_Task(void);
 uint16_t CDC_GetTxQueueDepth(void);
 uint16_t CDC_GetTxQueueDepthMax(void);

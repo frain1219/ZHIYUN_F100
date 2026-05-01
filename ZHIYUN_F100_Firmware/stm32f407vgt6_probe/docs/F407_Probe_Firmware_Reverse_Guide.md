@@ -15,7 +15,7 @@
 ### 2.1 监听（Digital）
 
 - 1ms 轮询 `LIST_PINS` 全表。
-- 关键线 EXTI 边沿捕获（`PE0/PF1/PG2/PG5/PG6/PG7`），以及 OLED 抓取线（`PE8~PE12`）。
+- 关键线 EXTI 边沿捕获（`PE0/PG2/PG5/PG6/PG7`），以及 OLED 抓取线（`PE8~PE12`）。
 - EXTI 事件记录已改为端口感知（按 `port+pin` 归属），避免同编号不同端口误记。
 - 事件包含 `t_ms` 与 `t_us`。
 - `GET_STATUS` 输出快照；`SUBSCRIBE ON` 可推送 `event/snapshot`。
@@ -82,6 +82,7 @@
 
 ## 5. 关键限制
 
+- **PF1 / PG1 在 STM32F407VGT6 LQFP100 封装中未引出**，引脚表中已移除。`BYPASS_FSM` 功能依赖 PF1（注入）和 PG1（监听 VS_EN），在当前硬件上无法正常工作，命令可执行但 `trigger_count` 不会增长。
 - EXTI 仍受硬件 line 资源约束，不能无上限并发捕获。
 - ADC 流当前为软件轮询，非 DMA 环形模式。
 - USB 背压下仍可能丢帧，但丢帧可见。
